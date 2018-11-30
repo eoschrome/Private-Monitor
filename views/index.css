@@ -1,0 +1,88 @@
+body{
+    margin:0 !important;
+    padding: 0 !important;
+    line-height: 1;
+    background-color: #0b1831;
+    background-image: linear-gradient(100deg,#031433 0%,#1a395c 51%,#193b5e 75%);
+    color: aliceblue;
+    overflow-x: hidden;
+}
+nav{
+    position: sticky;
+    top:0;
+    background-color: #0b1831;
+    background-image: linear-gradient(45deg,#031433 0%,#1a395c 51%,#193b5e 75%);
+}
+/* ################# Logo ############################################ */
+#logo{
+    color:aliceblue;
+}
+#chrome {
+    font-weight: 100;
+}
+#time{
+    float:right;
+}
+/* ############### Card Settings ####################################*/
+.card h6{
+    color:rgba(143, 138, 138, 0.993);
+}
+
+.column {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.card{
+    border-radius: 0 !important;
+    background-color: rgba(6, 52, 73, 0.4) !important;
+    color: aliceblue !important;
+    border:1% solid rgb(3, 25, 44) !important;
+}
+
+
+.all{
+    padding:0 !important;
+    margin:0 !important;
+    box-shadow:1px 1px 0px rgb(3, 25, 44)
+}
+#bpTable{
+    color: aliceblue;
+}
+
+
+/* ################## Non-Empty Blocks Row ###################### */
+.bar {
+    width:99%;
+    height:8px;
+    background-color: rgba(220,220,220,0.4);
+}
+#myBar{
+    width: 1%;
+    height: 8px;
+    background-color: rgba(76,175,80,0.90);
+}
+.Non-Empty{
+    display: flex !important;
+    flex-direction: column;
+    margin:0 !important;
+    height: 110px;
+}
+
+#used {
+    color:whitesmoke;
+}
+
+/*##################### Map #################################### */
+#map {
+height:50%;
+}
+
+@media screen and (max-width:950px){
+    .first_div, .tbl_div, .map_div{
+    width: 100% !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    }
+}

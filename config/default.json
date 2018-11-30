@@ -1,0 +1,23 @@
+
+{
+    "SERVER": 
+    {
+        "HOST": "211.195.229.79", 
+        "PORT": "4000"
+    },
+    "MONGODB":
+    {
+        "ADDRESS":"211.195.229.80:27017/",
+        "DB_NAME":"EOS",
+        "AUTH_IS_REQUIRED":false,
+        "AUTH_SOURCE":"admin",
+        "USER":"root",
+        "PASSWORD":"ibct1234"
+    },
+    "BUGSNAG_API_KEY":"9de2bf94a98d6fe44d4b8716af46f334",
+    "KEY_PROVIDER":"5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3",
+    "HTTP_END_POINT":"http://211.195.229.80:8888",
+    "CHAIN_ID":"b4a38c75226dec44a9d67d10033e3dafa4fc819f021abaa86fc326f1345ed563",
+    "COINMARKET_API_KEY":"889eb690-e894-4efe-9efe-72901e71ddc0"
+
+}

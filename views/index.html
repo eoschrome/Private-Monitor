@@ -1,0 +1,142 @@
+<!--
+sha512-fqmNgLjSEhMSiGW9Tkv735UpvnPPKlaVOHgYwrOEhzRbzcsB5z7g2zHYtAOKgIOYNkGg3Q3CBfJapbVU9lzbpA== lib/eos.js
+sha512-zhPSKFEBlDVvUzjl9aBS66cI8tDYoLetynuKvIekHT8NZZ12oxwcZ//M/eT/2Rb/pR/cjFvLD8104Cy//sdEnA== lib/eos.min.js
+sha512-VKOxq8R14PpPh4nbLvD8DtxxTv1UmZp7pb3+P8IOQ36m3PBJpm6cd8pI8WRI6d9/aozwADKb3HSFQ7A8s+OhSA== lib/eos.min.js.map
+-->
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="index.css" type="text/css">
+  <script src="index.js"></script>
+
+  <!-- Bugsnag -->
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- EOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/eosjs@16.0.9/lib/eos.min.js" integrity="sha512-zhPSKFEBlDVvUzjl9aBS66cI8tDYoLetynuKvIekHT8NZZ12oxwcZ//M/eT/2Rb/pR/cjFvLD8104Cy//sdEnA=="
+    crossorigin="anonymous"></script>
+  <!-- JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+  </script>
+  <!--SOCKET.IO cdn -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+  <script>
+    var socket = io.connect('http://211.195.229.79:4000')
+  </script>
+
+  <!--GOOGLE MAPS API -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAe5WiXSHL5HJ54Ewdt0_eAuhcN-r_AA2o&callback=initMap">
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+
+  <script type="text/javascript" src="app.js"></script>
+  <script src="bps.js?04"></script>
+  <script src="check_nodes.js?02"></script>
+  <script src="utils.js?03"></script>
+  <link rel="stylesheet" href="style.css?02">
+  <title> EOSChrome DashBoard</title>
+</head>
+
+<body>
+  <nav>
+    <h2 id="logo">EOS<span id="chrome">Chrome</span><span id="time"></span></h2>
+  </nav>
+  <div class="container-fluid" id="content">
+    <div class="container first_div">
+      <div class="row Blocks">
+        <div class="col-md-12 col-lg-2 column">
+          <div class="card card-body">
+            <h4 id="eos">Loading..</h4>
+            <h6>LAST BLOCK</h6>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4 column">
+          <div class="card card-body">
+            <h4 id="last_irr_block">Loading..</h4>
+            <h6>LAST IRREVERSIBLE BLOCK</h6>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-3 column">
+          <div class="card card-body">
+            <h4 id="BP_name">Loading..</h4>
+            <h6>CURRENT PRODUCER</h6>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-3 column">
+          <div class="card card-body">
+            <h4 id="next_bp">Loading..</h4>
+            <h6>NEXT PRODUCER</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row Blocks">
+        <div class="col-md-12 col-lg-6 column">
+          <div class="card card-body">
+            <h4 id="num_of_blocks">Loading..</h4>
+            <h6>NUMBER OF BLOCKS</h6>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 column">
+          <div class="card card-body">
+            <h4 id="num_of_trx">Loading..</h4>
+            <h6>NUMBER OF TRANSACTIONS</h6>
+          </div>
+        </div>
+      </div>
+      <div class="row Blocks">
+        <div class="col-md-12 col-lg-12 column">
+          <div class="card card-body Non-Empty">
+            <div class="bar">
+              <div id="myBar"></div>
+            </div>
+            <div>
+              (<span id="used">Loading..</span>)
+              <h4 id="non_empty">Loading..</h4>
+            </div>
+            <div>
+              <h6>NON-EMPTY BLOCKS</h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-6 column max_supply">
+        </div>
+      </div>
+    </div>
+    <div class="container map_div" id="map"></div>
+    <br>
+    <div class="container tbl_div">
+      <div class="row">
+      <div class="col-sm-12 col-md-12">
+
+        <div class="table-responsive-sm vscroll">
+          <table class="table table-hover table-sm" id="bpTable">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col" width="110">BP name</th>
+                <th scope="col">Answered</th>
+                <th scope="col">Last Block</th>
+                <th scope="col">Produced</th>
+                <th scope="col">Block</th>
+                <th scope="col">Version</th>
+                <th scope="col">Organisation</th>
+                <th scope="col">Location</th>
+              </tr>
+            </thead>
+            <tbody id="tbl_body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <footer></footer>
+</body>
+
+</html>
